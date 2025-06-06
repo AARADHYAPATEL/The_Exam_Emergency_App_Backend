@@ -1,0 +1,184 @@
+/* === RESET & BASE === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Roboto, sans-serif;
+}
+
+body {
+  background: radial-gradient(circle at center, #0f172a 0%, #020617 100%);
+  color: #f9fafb;
+  padding: 30px;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* === HEADINGS === */
+h1 {
+  font-size: 2.8rem;
+  text-align: center;
+  color: #ff4d4f;
+  text-shadow: 0 0 10px rgba(255, 77, 79, 0.7),
+               0 0 20px rgba(255, 77, 79, 0.4);
+  margin-bottom: 35px;
+  letter-spacing: 1.5px;
+  animation: flicker 2s infinite alternate;
+}
+
+h2 {
+  font-size: 1.6rem;
+  text-align: center;
+  color: #34d399;
+  margin-top: 25px;
+}
+
+/* === FORM ELEMENTS === */
+label {
+  font-weight: 600;
+  margin-bottom: 6px;
+  display: block;
+  color: #93c5fd;
+}
+
+input[type="text"],
+select {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 20px;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #f1f5f9;
+  backdrop-filter: blur(12px);
+  transition: 0.3s ease;
+  box-shadow: inset 0 0 10px rgba(59, 130, 246, 0.3);
+}
+
+select {
+  color: #ef4444; /* red text for selected option */
+}
+
+select option {
+  color: #ef4444; /* red text for dropdown options */
+  background-color: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+}
+
+input[type="text"]:focus,
+select:focus {
+  border: 2px solid #60a5fa;
+  box-shadow: 0 0 12px rgba(59, 130, 246, 0.6);
+  outline: none;
+}
+
+/* === BUTTONS === */
+button {
+  background: linear-gradient(135deg, #ef4444, #991b1b);
+  color: #fff;
+  padding: 14px 28px;
+  font-weight: bold;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  margin: 6px 10px 6px 0;
+  transition: 0.25s ease;
+  box-shadow: 0 0 15px rgba(239, 68, 68, 0.6);
+  position: relative;
+  overflow: hidden;
+}
+
+button::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 80%);
+  transform: rotate(45deg);
+  pointer-events: none;
+}
+
+button:hover {
+  transform: scale(1.06);
+  box-shadow: 0 0 25px rgba(239, 68, 68, 0.9);
+}
+
+/* === ALERT BOXES === */
+.alert {
+  border-left: 6px solid #f87171;
+  background: rgba(255, 0, 0, 0.1);
+  color: #fee2e2;
+  padding: 20px 25px;
+  margin-bottom: 20px;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 20px rgba(220, 38, 38, 0.4);
+  animation: slideIn 0.6s ease, glowAlert 1.6s infinite alternate;
+}
+
+.success {
+  border-left-color: #10b981;
+  background: rgba(16, 185, 129, 0.1);
+  color: #d1fae5;
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
+  animation: slideIn 0.6s ease;
+}
+
+/* === ANIMATIONS === */
+@keyframes flicker {
+  0% { opacity: 1; }
+  50% { opacity: 0.95; text-shadow: 0 0 25px rgba(255, 77, 79, 0.9); }
+  100% { opacity: 1; }
+}
+
+@keyframes glowAlert {
+  from { box-shadow: 0 0 10px rgba(220, 38, 38, 0.4); }
+  to { box-shadow: 0 0 30px rgba(220, 38, 38, 0.7); }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* === CONTAINER === */
+.container {
+  max-width: 700px;
+  margin: auto;
+  background: rgba(31, 41, 55, 0.6);
+  padding: 35px;
+  border-radius: 16px;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(16px);
+  transition: 0.3s ease;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #4b5563;
+  margin: 20px 0;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 640px) {
+  button {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  h1 {
+    font-size: 2.2rem;
+  }
+
+  .container {
+    padding: 25px;
+  }
+}
