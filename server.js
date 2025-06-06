@@ -31,7 +31,6 @@ app.get('/alerts', (req, res) => {
   }
 });
 
-// POST /alerts - add a new alert to file
 app.post('/alerts', (req, res) => {
   try {
     const newAlert = req.body;
@@ -40,6 +39,9 @@ app.post('/alerts', (req, res) => {
 
     alerts.push(newAlert);
     fs.writeFileSync(ALERT_FILE, JSON.stringify(alerts, null, 2), 'utf-8');
+
+    io.emit('new-alert', newAlert); // <--- THIS is the fix
+    console.log("Broadcasted new alert via WebSocket");
 
     res.status(201).json({ message: 'Alert added successfully' });
   } catch (err) {
