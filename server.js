@@ -8,9 +8,7 @@ const PORT = process.env.PORT || 3000;
 const ALERT_FILE = path.join(__dirname, 'alerts.json');
 
 // Middleware
-app.use(cors({
-  origin: "https://the-exam-emergency-app-frontend-2.vercel.app"
-}));
+app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '.')));
 
